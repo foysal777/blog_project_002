@@ -1,0 +1,78 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_add %}
+<style>
+  body {
+    background-color: rgb(227, 227, 227);
+  }
+
+  .radio{
+
+    background-color: rgb(172, 240, 198);
+    border-radius: 5px ;
+  }
+  .my_bg{
+
+    background-size: cover;
+    width: 50rem;
+    height: 50rem;
+    margin-left: 15rem;
+    
+    justify-content: center;
+    align-items: center;
+    
+   
+  
+  }
+</style>
+{% endblock %}
+
+{% block main %}
+<!-- <h1 class="text-center p-5">This is Home page</h1> -->
+
+<img class="my_bg mt-5" src="{% static 'bg.png' %}" alt="Not found">
+
+<section class="d-flex flex-wrap p-5 ">
+  <div class="radio col-lg-3 p-5">
+    <h4 class="p-4"> All Categories </h4>
+    {% for i in data1 %}
+      <div class="form-check m-2">
+        
+
+        <input class="form-check-input" type="checkbox" name="categorys" id="{{ i.id }}">
+        <label class="form-check-label" for="{{ i.id }}">
+       
+          <a  class="btn btn-success" href="{% url 'category_wise_slug' i.slug %}">   {{ i.name }} </a>
+        </label>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- This is the card views -->
+  <div class="cardview col-lg-9 ">
+    <div class="card_section d-flex justify-content-center gap-3 flex-wrap">
+      {% for post in data %}
+        <div class="card border-success border-3 mb-3 col-sm-3" style="max-width: 18rem">
+          <div class="card-header fw-bold text-light" style="background-color: rgb(39, 91, 51)">
+            {{ post.title }}
+          </div>
+          <div class="card-body text-info">
+            <h5 class="card-title text-dark">{{ post.content|truncatewords:20 }}</h5>
+            <p class="text-primary fs-4">Author: {{ post.authors.username }}</p>
+            <br />
+            <p class="text-dark fs-4">
+              Category:
+              {% for cat in post.categorys.all %}
+                <button class="btn btn-warning btn-sm g-2">{{ cat.name }}</button>
+              {% endfor %}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
