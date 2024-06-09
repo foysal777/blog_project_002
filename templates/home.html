@@ -15,16 +15,22 @@
   }
   .my_bg{
 
-    background-size: cover;
-    width: 50rem;
-    height: 50rem;
-    margin-left: 15rem;
-    
-    justify-content: center;
-    align-items: center;
+    height: 450px;
+    width: 450px;
+    margin-left: 80px;
     
    
   
+  }
+  .text{
+
+
+    color: rgb(102, 69, 248);
+  }
+
+  .django{
+
+    color: rgb(76, 73, 238);
   }
 </style>
 {% endblock %}
@@ -32,10 +38,28 @@
 {% block main %}
 <!-- <h1 class="text-center p-5">This is Home page</h1> -->
 
-<img class="my_bg mt-5" src="{% static 'bg.png' %}" alt="Not found">
+
 
 <section class="d-flex flex-wrap p-5 ">
-  <div class="radio col-lg-3 p-5">
+ 
+   <div class="text col-lg-6 justify-content-center fw-bold mt-5 pt-5  ">
+<h2 class="django text-center ">Welcome to Django Blog Project ...</h2><hr>
+    As a professional blogger, I can tell you that a beautiful layout is just as important as the text itself. A big part of creating a blog involves thinking carefully about how to display your content. Will you put your articles or your images front and center? What about including videos or podcasts? And how will you encourage readers to subscribe?
+
+
+    With all these considerations to think about, you may find yourself overwhelmed at the prospect of deciding how to make a website and blog entirely from scratch. Often, the best route to take is to use blog templates that are created by design professionals to suit your particular niche.
+
+   </div>
+   <div class="imgg col-lg-6">
+
+    <img class="my_bg mt-5" src="{% static 'bg.png' %}" alt="Not found">
+
+   </div>
+
+</section>
+
+<section class="d-flex flex-wrap p-5 ">
+  <div class="radio col-lg-2 p-5">
     <h4 class="p-4"> All Categories </h4>
     {% for i in data1 %}
       <div class="form-check m-2">
@@ -51,7 +75,7 @@
   </div>
 
   <!-- This is the card views -->
-  <div class="cardview col-lg-9 ">
+  <div class="cardview col-lg-10 ">
     <div class="card_section d-flex justify-content-center gap-3 flex-wrap">
       {% for post in data %}
         <div class="card border-success border-3 mb-3 col-sm-3" style="max-width: 18rem">
@@ -59,7 +83,8 @@
             {{ post.title }}
           </div>
           <div class="card-body text-info">
-            <h5 class="card-title text-dark">{{ post.content|truncatewords:20 }}</h5>
+            <img src="{{post.image.url}}" class="card-img-top" alt="Not Found">
+            <h5 class="card-title text-dark mt-3">  <a href="{% url 'post_details' post.id %}"> {{ post.content|truncatewords:5 }}</a>  </h5>
             <p class="text-primary fs-4">Author: {{ post.authors.username }}</p>
             <br />
             <p class="text-dark fs-4">

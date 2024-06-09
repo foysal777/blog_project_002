@@ -23,7 +23,7 @@
     <form style="width: 50%; margin: auto;" method="post">
         {% csrf_token %}   
        
-        {{data | crispy}}
+        {{form | crispy}}
            
         <button  class="btn btn-success" > Submit </button>
     </form>

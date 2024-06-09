@@ -108,7 +108,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -118,6 +118,12 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR/'static',
 ]
+
+# Base url to serve media files
+MEDIA_URL = '/media/'
+
+# Path where media is stored'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type

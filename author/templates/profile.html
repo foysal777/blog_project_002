@@ -23,9 +23,11 @@
 
 <div class="d-grid gap-2 col-6 mx-auto p-3">
     <a href="{% url 'edit_profile' %}" class="btn btn-lg btn-success">Edit profile</a>
+    <a href="{% url 'pass_change' %}" class="btn btn-lg btn-warning" > Change PassWord </a>
+
   </div></div>
  
-  <div class="card_section d-flex justify-content-center gap-3 flex-wrap">
+  <div class="card_section d-flex justify-content-center gap-3 flex-wrap mt-5">
     {% for post in data %}
     <div
       class="card border-success border-3 mb-3 col-sm-3"

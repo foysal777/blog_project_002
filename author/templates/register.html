@@ -5,7 +5,7 @@
 {% block css_add %}
 <style>
     .btn-success:hover {
-        background-color: #ff0004; /* Change this to your desired hover color */
+        background-color: #ff0004;
     }
 
    body{
@@ -23,7 +23,7 @@
     <form style="width: 50%; margin: auto;" method="post">
         {% csrf_token %}   
        
-        {{ data | crispy }}
+        {{ form | crispy }}
            
         <button  class="btn btn-success" > Submit </button>
     </form>
